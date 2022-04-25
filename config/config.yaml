@@ -1,0 +1,4 @@
+conda_env: 'caaps_env.yml'
+read_id:
+- shC1
+indexed_genome: 'GRCh38_noalt_as'
