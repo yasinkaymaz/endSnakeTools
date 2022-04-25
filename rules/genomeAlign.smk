@@ -4,8 +4,6 @@ rule genomeAlign:
         genome = {genome_prefix}
     output:
         'aligned_reads/aligned_{read_id}.sam'
-    params:
-        flags = "-x {input.genome} -q {input.fastq}"
     shell:
-        'bowtie2 {params.flags} -S {output} '
+        'mkdir aligned_{read_id} && bowtie2 -x {input.genome} -q {input.fastq} -S {output}'
 
