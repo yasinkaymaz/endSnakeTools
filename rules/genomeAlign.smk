@@ -11,4 +11,4 @@ rule genomeAlign:
     log:
         "aligned_reads/aligment_{read_id}.log"
     shell:
-        'mkdir -p aligned_reads && bowtie2 -x {params.idx} -q {input.fastq} -S {output}'
+        'mkdir -p aligned_reads && bowtie2 -x {input.idx} -q {input.fastq} -S {output}'
