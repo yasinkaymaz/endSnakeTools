@@ -1,9 +1,18 @@
-rule trimPolyA_Tprinseq:
+rule prinseq_trimPolyA_T:
     input:
-        fastq = '{read_id}.fastq'
+        '{read_id}.fastq'
     output:
-        r1 = 'prinseq/SE_trimmed_{read_id}.fastq'
+        'prinseq/SE_trimmed_{read_id}.fastq'
+    conda:
+        "envs/trimmer.yml"
+    log:
+        "prinseq/prinseq_{read_id}.log"
     shell:
-        'prinseq-lite.pl -fastq {input.fastq} -trim_tail_left 10 -trim_tail_right 10'
-
-
+        'mkdir -p prinseq && \
+        prinseq-lite.pl \
+        -fastq {input} \
+        -trim_tail_left 10 \
+        -trim_tail_right \
+        -out_good prinseq/SE_trimmed_{read_id} \
+        -out_bad prinseq/SE_trimmed_{read_id} \
+        -log {log}'
