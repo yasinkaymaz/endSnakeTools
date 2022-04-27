@@ -6,3 +6,4 @@ dependencies:
   - bwa
   - bowtie2
   - tbb=2020.2
+  - samtools
